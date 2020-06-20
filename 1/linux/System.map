@@ -30901,7 +30901,7 @@ c045e7c8 T __initramfs_start
 c045e7c8 t __irf_start
 c045e7c8 T __security_initcall_end
 c045e7c8 T __security_initcall_start
-c045e84e t __irf_end
+c045e84d t __irf_end
 c045e850 T __initramfs_size
 c0460000 D __data_loc
 c0460000 D __init_end
