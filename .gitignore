@@ -1,5 +1,7 @@
 build/
 *.o
+linux/.tmp_System.map
+linux/System.map
 1/linux/.tmp_vmlinux1
 1/linux/.tmp_vmlinux2
 1/linux/.version
