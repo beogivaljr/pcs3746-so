@@ -1,5 +1,10 @@
 build/
 *.o
+1/linux/.tmp_vmlinux1
+1/linux/.tmp_vmlinux2
+1/linux/.version
+1/linux/include/generated/
+1/linux/vmlinux
 .DS_Store
 .DS_Store?
 ._*
