@@ -1,0 +1,36 @@
+#include "stack.h"
+#include "queue.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+#include 
+
+int main()
+{
+  printf("-- Begin same lists test --\n");
+  for (int i = 0; i < 6; i++) {
+    printf("QUEUE_INSERT %ld\n", same_list_queue_insert(i));
+    printf("STACK_PUSH  %ld\n", stack_push(i*10+i));
+  }
+  print("\n");
+  for (int i = 0; i < 7; i++) {
+    printf("QUEUE_REMOVE %ld\n", same_list_queue_remove());
+    printf("STACK_POP %ld\n", stack_pop());
+  }
+  printf("-- End same lists test --\n");
+  printf("\n");
+  printf("-- Begin different lists test --\n");
+  for (int i = 0; i < 6; i++) {
+    printf("QUEUE_INSERT %ld\n", queue_insert(i));
+    printf("STACK_PUSH  %ld\n", stack_push(i*10));
+  }
+  print("\n");
+  for (int i = 0; i < 7; i++) {
+    printf("QUEUE_REMOVE %ld\n", queue_remove());
+    printf("STACK_POP %ld\n", stack_pop());
+  }
+  printf("-- End different lists test --\n");
+  for (;;)
+    sleep(1000);
+  return 0;
+}

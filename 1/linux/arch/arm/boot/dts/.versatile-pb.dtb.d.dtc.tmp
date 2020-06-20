@@ -1,0 +1,1 @@
+arch/arm/boot/dts/versatile-pb.dtb: arch/arm/boot/dts/.versatile-pb.dtb.dts.tmp arch/arm/boot/dts/skeleton.dtsi
