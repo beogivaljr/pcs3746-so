@@ -2847,34 +2847,35 @@ context_switch(struct rq *rq, struct task_struct *prev,
 {
 	struct mm_struct *mm, *oldmm;
 	
-	unsigned int previous_thread = (void *)prev->stack;
-	unsigned int next_thread = (void *)next->stack;
-	struct thread_info *current_thread = current_thread_info();
-	struct pt_regs *regs = current_pt_regs();
-	struct task_struct *curr = current;
+	// unsigned int previous_thread = (void *)prev->stack;
+	// unsigned int next_thread = (void *)next->stack;
+	// struct thread_info *current_thread = current_thread_info();
+	// struct pt_regs *regs = current_pt_regs();
+	// struct task_struct *curr = current;
 	// pr_info("Current pid test: %d",current->pid);
-	// if(current->pid == 0 || current->pid == 16) {
-		pr_info("Current pid test: %d",current->pid);
-	    pr_info("User R0 was %p\n", (void *)regs->ARM_r0);
-	    pr_info("User R1 was %p\n", (void *)regs->ARM_r1);
-	    pr_info("User R2 was %p\n", (void *)regs->ARM_r2);
-	    pr_info("User R3 was %p\n", (void *)regs->ARM_r3);
-	    pr_info("User R4 was %p\n", (void *)regs->ARM_r4);
-	    pr_info("User R5 was %p\n", (void *)regs->ARM_r5);
-	    pr_info("User R6 was %p\n", (void *)regs->ARM_r6);
-	    pr_info("User R7 was %p\n", (void *)regs->ARM_r7);
-	    pr_info("User R8 was %p\n", (void *)regs->ARM_r8);
-	    pr_info("User R9 was %p\n", (void *)regs->ARM_r9);
-	    pr_info("User R10 was %p\n", (void *)regs->ARM_r10);
-	    pr_info("User LR was %p\n", (void *)regs->ARM_lr);
-	    pr_info("User IP was %p\n", (void *)regs->ARM_ip);
-	    pr_info("User SP was %p\n", (void *)regs->ARM_sp);
-	    pr_info("User FP was %p\n", (void *)regs->ARM_fp);
-	    pr_info("User CPSR was %p\n", (void *)regs->ARM_cpsr);
-	    pr_info("User PC was %p\n", (void *)regs->ARM_pc);
-		// }
-		// pr_info("Previous task cpu state = 0x%x", previous_thread);
-		pr_info("Next task cpu state = 0x%x", next_thread);
+	// if(current->pid == 44 || current->pid == 45) {
+	// 	printk("------------------------------------------");
+	// 	pr_info("Current pid test: %d",current->pid);
+	//     pr_info("User R0 was %p\n", (void *)regs->ARM_r0);
+	//     pr_info("User R1 was %p\n", (void *)regs->ARM_r1);
+	//     pr_info("User R2 was %p\n", (void *)regs->ARM_r2);
+	//     pr_info("User R3 was %p\n", (void *)regs->ARM_r3);
+	//     pr_info("User R4 was %p\n", (void *)regs->ARM_r4);
+	//     pr_info("User R5 was %p\n", (void *)regs->ARM_r5);
+	//     pr_info("User R6 was %p\n", (void *)regs->ARM_r6);
+	//     pr_info("User R7 was %p\n", (void *)regs->ARM_r7);
+	//     pr_info("User R8 was %p\n", (void *)regs->ARM_r8);
+	//     pr_info("User R9 was %p\n", (void *)regs->ARM_r9);
+	//     pr_info("User R10 was %p\n", (void *)regs->ARM_r10);
+	//     pr_info("User LR was %p\n", (void *)regs->ARM_lr);
+	//     pr_info("User IP was %p\n", (void *)regs->ARM_ip);
+	//     pr_info("User SP was %p\n", (void *)regs->ARM_sp);
+	//     pr_info("User FP was %p\n", (void *)regs->ARM_fp);
+	//     pr_info("User CPSR was %p\n", (void *)regs->ARM_cpsr);
+	//     pr_info("User PC was %p\n", (void *)regs->ARM_pc);
+	// 	// }
+	// 	// pr_info("Previous task cpu state = 0x%x", previous_thread);
+	// 	pr_info("Next task cpu state = 0x%x", next_thread);
 	// }
 
 	prepare_task_switch(rq, prev, next);
