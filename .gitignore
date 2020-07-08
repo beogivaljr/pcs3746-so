@@ -15,4 +15,4 @@ linux/System.map
 ehthumbs.db
 Thumbs.db
 \#*
-xcode-proj/
+.vscode/
