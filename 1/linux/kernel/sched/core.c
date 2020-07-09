@@ -39,6 +39,12 @@
 #define CREATE_TRACE_POINTS
 #include <trace/events/sched.h>
 
+
+#include <asm/ptrace.h>
+
+
+
+
 DEFINE_PER_CPU_SHARED_ALIGNED(struct rq, runqueues);
 
 /*
@@ -2840,6 +2846,37 @@ context_switch(struct rq *rq, struct task_struct *prev,
 	       struct task_struct *next, struct rq_flags *rf)
 {
 	struct mm_struct *mm, *oldmm;
+	
+	// unsigned int previous_thread = (void *)prev->stack;
+	// unsigned int next_thread = (void *)next->stack;
+	// struct thread_info *current_thread = current_thread_info();
+	// struct pt_regs *regs = current_pt_regs();
+	// struct task_struct *curr = current;
+	// pr_info("Current pid test: %d",current->pid);
+	// if(current->pid == 44 || current->pid == 45) {
+	// 	printk("------------------------------------------");
+	// 	pr_info("Current pid test: %d",current->pid);
+	//     pr_info("User R0 was %p\n", (void *)regs->ARM_r0);
+	//     pr_info("User R1 was %p\n", (void *)regs->ARM_r1);
+	//     pr_info("User R2 was %p\n", (void *)regs->ARM_r2);
+	//     pr_info("User R3 was %p\n", (void *)regs->ARM_r3);
+	//     pr_info("User R4 was %p\n", (void *)regs->ARM_r4);
+	//     pr_info("User R5 was %p\n", (void *)regs->ARM_r5);
+	//     pr_info("User R6 was %p\n", (void *)regs->ARM_r6);
+	//     pr_info("User R7 was %p\n", (void *)regs->ARM_r7);
+	//     pr_info("User R8 was %p\n", (void *)regs->ARM_r8);
+	//     pr_info("User R9 was %p\n", (void *)regs->ARM_r9);
+	//     pr_info("User R10 was %p\n", (void *)regs->ARM_r10);
+	//     pr_info("User LR was %p\n", (void *)regs->ARM_lr);
+	//     pr_info("User IP was %p\n", (void *)regs->ARM_ip);
+	//     pr_info("User SP was %p\n", (void *)regs->ARM_sp);
+	//     pr_info("User FP was %p\n", (void *)regs->ARM_fp);
+	//     pr_info("User CPSR was %p\n", (void *)regs->ARM_cpsr);
+	//     pr_info("User PC was %p\n", (void *)regs->ARM_pc);
+	// 	// }
+	// 	// pr_info("Previous task cpu state = 0x%x", previous_thread);
+	// 	pr_info("Next task cpu state = 0x%x", next_thread);
+	// }
 
 	prepare_task_switch(rq, prev, next);
 
@@ -3289,7 +3326,6 @@ pick_next_task(struct rq *rq, struct task_struct *prev, struct rq_flags *rf)
 {
 	const struct sched_class *class;
 	struct task_struct *p;
-
 	/*
 	 * Optimization: we know that if all tasks are in the fair class we can
 	 * call that function directly, but only if the @prev task wasn't of a
@@ -3307,7 +3343,6 @@ pick_next_task(struct rq *rq, struct task_struct *prev, struct rq_flags *rf)
 		/* Assumes fair_sched_class->next == idle_sched_class */
 		if (unlikely(!p))
 			p = idle_sched_class.pick_next_task(rq, prev, rf);
-
 		return p;
 	}
 

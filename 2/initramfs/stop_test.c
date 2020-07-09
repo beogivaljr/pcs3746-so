@@ -17,29 +17,32 @@ int main()
 			return -1;
 		} else if (pid_2) {
 			for (;;) {
-                   		const struct timespec ts2 = {.tv_sec = 7, .tv_nsec = 0 };
+	            const struct timespec ts2 = {.tv_sec = 7, .tv_nsec = 0 };
 				const struct timespec ts4 = {.tv_sec = 7, .tv_nsec = 0 };
-                                nanosleep(&ts2, NULL);	
+                nanosleep(&ts2, NULL);	
 				stop_process(pid_1);
-                                nanosleep(&ts4, NULL);
+                nanosleep(&ts4, NULL);
 				continue_process();
-                                nanosleep(&ts2, NULL);
+                nanosleep(&ts2, NULL);
 				stop_process(pid_2);
-                                nanosleep(&ts4, NULL);
+                nanosleep(&ts4, NULL);
 				continue_process();
 			}
 		} else {
 			for (;;) {
-				const struct timespec ts = {.tv_sec = 0, .tv_nsec = 5e8 };
+				const struct timespec ts = {.tv_sec = 2, .tv_nsec = 0 };
 				nanosleep(&ts, NULL);
 				printf("2\n");
 			}
 		}
 	} else {
 		for (;;) {
-			const struct timespec ts = {.tv_sec = 0, .tv_nsec = 5e8 };
+			const struct timespec ts = {.tv_sec = 2, .tv_nsec = 0 };
 			nanosleep(&ts, NULL);
 			printf("1\n");
 		}
 	}
 }
+
+//b	105b4 stop
+//105e4 continue

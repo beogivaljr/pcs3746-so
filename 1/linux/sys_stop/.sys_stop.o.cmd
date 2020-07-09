@@ -528,6 +528,11 @@ deps_sys_stop/sys_stop.o := \
   include/linux/kmemleak.h \
     $(wildcard include/config/debug/kmemleak.h) \
   include/linux/kasan.h \
+  arch/arm/include/asm/switch_to.h \
+    $(wildcard include/config/cpu/v7.h) \
+  include/linux/sched/task_stack.h \
+    $(wildcard include/config/stack/growsup.h) \
+  include/uapi/linux/magic.h \
 
 sys_stop/sys_stop.o: $(deps_sys_stop/sys_stop.o)
 

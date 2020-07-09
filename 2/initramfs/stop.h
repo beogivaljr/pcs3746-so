@@ -4,6 +4,7 @@
 
 #define __NR_stop	401
 #define __NR_start	402
+// #define __NR_print	403
 
 long stop_process(int pid)
 {
@@ -14,3 +15,8 @@ long continue_process()
 {
 	return syscall(__NR_start);
 }
+
+// long print_regs(int pid)
+// {
+// 	return syscall(__NR_print);
+// }
