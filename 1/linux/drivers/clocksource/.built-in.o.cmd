@@ -1,1 +1,0 @@
-cmd_drivers/clocksource/built-in.o :=  arm-linux-gnueabi-ld -EL    -r -o drivers/clocksource/built-in.o drivers/clocksource/clksrc-probe.o drivers/clocksource/mmio.o drivers/clocksource/timer-sp804.o drivers/clocksource/versatile.o 

@@ -1,12 +1,5 @@
 build/
 *.o
-linux/.tmp_System.map
-linux/System.map
-1/linux/.tmp_vmlinux1
-1/linux/.tmp_vmlinux2
-1/linux/.version
-1/linux/include/generated/
-1/linux/vmlinux
 .DS_Store
 .DS_Store?
 ._*
@@ -15,5 +8,5 @@ linux/System.map
 ehthumbs.db
 Thumbs.db
 \#*
-.vscode/
+.vscode
 .devcontainer
