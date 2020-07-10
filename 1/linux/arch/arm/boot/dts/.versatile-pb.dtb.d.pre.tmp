@@ -1,0 +1,2 @@
+versatile-pb.o: arch/arm/boot/dts/versatile-pb.dts \
+ arch/arm/boot/dts/versatile-ab.dts

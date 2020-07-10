@@ -1,0 +1,1 @@
+cmd_drivers/tty/serial/8250/8250.ko := arm-linux-gnueabi-ld -EL -r  -T ./scripts/module-common.lds --build-id  -o drivers/tty/serial/8250/8250.ko drivers/tty/serial/8250/8250.o drivers/tty/serial/8250/8250.mod.o ;  true
