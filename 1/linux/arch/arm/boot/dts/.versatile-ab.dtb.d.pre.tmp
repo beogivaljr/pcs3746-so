@@ -1,0 +1,1 @@
+versatile-ab.o: arch/arm/boot/dts/versatile-ab.dts
