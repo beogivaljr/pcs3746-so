@@ -12,5 +12,5 @@ linux/.tmp_*
 ehthumbs.db
 Thumbs.db
 \#*
-.vscode/
+.vscode
 .devcontainer
