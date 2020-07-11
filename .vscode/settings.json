@@ -1,0 +1,18 @@
+{
+    "files.exclude": {
+        "**/.*.*.cmd": true,
+        "**/.*.d": true,
+        "**/.*.S": true
+    },
+    "[c]": {
+        "editor.detectIndentation": false,
+        "editor.tabSize": 8,
+        "editor.insertSpaces": false,
+        "editor.rulers": [80]
+    },
+    "files.associations": {
+        "unistd.h": "c",
+        "hello_world.h": "c",
+        "syscall.h": "c"
+    }
+}

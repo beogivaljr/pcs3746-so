@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "cStandard": "c99",
+            "intelliSenseMode": "gcc-arm",
+            "defines": [
+                "__GNUC__",
+                "__KERNEL__"
+            ],
+            "includePath": [
+                "${workspaceFolder}/2/initramfs/**",
+                "${workspaceFolder}/1/linux/**"
+            ],
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/2",
+                    "${workspaceFolder}/1/linux/include",
+                    "${workspaceFolder}/1/linux/mm",
+                    "${workspaceFolder}/1/linux/fs",
+                    "${workspaceFolder}/1/linux/kernel"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            },
+            "compilerPath": "/usr/bin/arm-linux-gnueabi-gcc"
+        }
+    ],
+    "version": 4
+}
