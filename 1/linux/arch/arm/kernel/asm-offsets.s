@@ -122,7 +122,7 @@
 	.type	main, %function
 main:
 	.fnstart
-.LFB1729:
+.LFB1726:
 	.file 1 "arch/arm/kernel/asm-offsets.c"
 	.loc 1 60 0
 	@ args = 0, pretend = 0, frame = 0
@@ -469,7 +469,7 @@ main:
 	.syntax unified
 	mov	r0, #0	@,
 	bx	lr	@
-.LFE1729:
+.LFE1726:
 	.fnend
 	.size	main, .-main
 	.section	.debug_frame,"",%progbits
@@ -491,8 +491,8 @@ main:
 	.4byte	.LEFDE0-.LASFDE0
 .LASFDE0:
 	.4byte	.Lframe0
-	.4byte	.LFB1729
-	.4byte	.LFE1729-.LFB1729
+	.4byte	.LFB1726
+	.4byte	.LFE1726-.LFB1726
 	.align	2
 .LEFDE0:
 	.text
@@ -9097,8 +9097,8 @@ main:
 	.byte	0x1
 	.byte	0x3b
 	.4byte	0x83
-	.4byte	.LFB1729
-	.4byte	.LFE1729-.LFB1729
+	.4byte	.LFB1726
+	.4byte	.LFE1726-.LFB1726
 	.uleb128 0x1
 	.byte	0x9c
 	.uleb128 0x33
@@ -10034,14 +10034,14 @@ main:
 	.byte	0
 	.2byte	0
 	.2byte	0
-	.4byte	.LFB1729
-	.4byte	.LFE1729-.LFB1729
+	.4byte	.LFB1726
+	.4byte	.LFE1726-.LFB1726
 	.4byte	0
 	.4byte	0
 	.section	.debug_ranges,"",%progbits
 .Ldebug_ranges0:
-	.4byte	.LFB1729
-	.4byte	.LFE1729
+	.4byte	.LFB1726
+	.4byte	.LFE1726
 	.4byte	0
 	.4byte	0
 	.section	.debug_line,"",%progbits
