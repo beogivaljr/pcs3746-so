@@ -360,5 +360,6 @@
 #define __NR_stop_process (__NR_SYSCALL_BASE + 401)
 #define __NR_continue_process (__NR_SYSCALL_BASE + 402)
 #define __NR_write_device (__NR_SYSCALL_BASE + 403)
+#define __NR_last_interrupt (__NR_SYSCALL_BASE + 404)
 
 #endif /* _UAPI_ASM_ARM_UNISTD_COMMON_H */
