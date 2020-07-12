@@ -1,0 +1,1210 @@
+/* DO NOT EDIT. This file is generated from usage.src.h */
+/* vi: set sw=8 ts=8: */
+/*
+ * This file suffers from chronically incorrect tabification
+ * of messages. Before editing this file:
+ * 1. Switch you editor to 8-space tab mode.
+ * 2. Do not use \t in messages, use real tab character.
+ * 3. Start each source line with message as follows:
+ *    |<7 spaces>"text with tabs"....
+ * or
+ *    |<5 spaces>"\ntext with tabs"....
+ */
+#ifndef BB_USAGE_H
+#define BB_USAGE_H 1
+
+#define NOUSAGE_STR "\b"
+
+#if !ENABLE_USE_BB_CRYPT || ENABLE_USE_BB_CRYPT_SHA
+# define CRYPT_METHODS_HELP_STR "des,md5,sha256/512" \
+	" (default "CONFIG_FEATURE_DEFAULT_PASSWD_ALGO")"
+#else
+# define CRYPT_METHODS_HELP_STR "des,md5" \
+	" (default "CONFIG_FEATURE_DEFAULT_PASSWD_ALGO")"
+#endif
+
+
+#define ar_trivial_usage \
+       "[-o] [-v] [-p] [-t] [-x] ARCHIVE FILES" \
+
+#define ar_full_usage "\n\n" \
+       "Extract or list FILES from an ar archive\n" \
+     "\n	-o	Preserve original dates" \
+     "\n	-p	Extract to stdout" \
+     "\n	-t	List" \
+     "\n	-x	Extract" \
+     "\n	-v	Verbose" \
+
+#define uncompress_trivial_usage \
+       "[-cf] [FILE]..." \
+
+#define uncompress_full_usage "\n\n" \
+       "Decompress .Z file[s]\n" \
+     "\n	-c	Write to stdout" \
+     "\n	-f	Overwrite" \
+
+#define gunzip_trivial_usage \
+       "[-cfkt] [FILE]..." \
+
+#define gunzip_full_usage "\n\n" \
+       "Decompress FILEs (or stdin)\n" \
+     "\n	-c	Write to stdout" \
+     "\n	-f	Force" \
+     "\n	-k	Keep input files" \
+     "\n	-t	Test file integrity" \
+
+#define gunzip_example_usage \
+       "$ ls -la /tmp/BusyBox*\n" \
+       "-rw-rw-r--    1 andersen andersen   557009 Apr 11 10:55 /tmp/BusyBox-0.43.tar.gz\n" \
+       "$ gunzip /tmp/BusyBox-0.43.tar.gz\n" \
+       "$ ls -la /tmp/BusyBox*\n" \
+       "-rw-rw-r--    1 andersen andersen  1761280 Apr 14 17:47 /tmp/BusyBox-0.43.tar\n" \
+
+#define zcat_trivial_usage \
+       "[FILE]..." \
+
+#define zcat_full_usage "\n\n" \
+       "Decompress to stdout" \
+
+#define bunzip2_trivial_usage \
+       "[-cfk] [FILE]..." \
+
+#define bunzip2_full_usage "\n\n" \
+       "Decompress FILEs (or stdin)\n" \
+     "\n	-c	Write to stdout" \
+     "\n	-f	Force" \
+     "\n	-k	Keep input files" \
+
+#define bzcat_trivial_usage \
+       "[FILE]..." \
+
+#define bzcat_full_usage "\n\n" \
+       "Decompress to stdout" \
+
+#define unlzma_trivial_usage \
+       "[-cfk] [FILE]..." \
+
+#define unlzma_full_usage "\n\n" \
+       "Decompress FILE (or stdin)\n" \
+     "\n	-c	Write to stdout" \
+     "\n	-f	Force" \
+     "\n	-k	Keep input files" \
+
+#define lzma_trivial_usage \
+       "-d [-cfk] [FILE]..." \
+
+#define lzma_full_usage "\n\n" \
+       "Decompress FILE (or stdin)\n" \
+     "\n	-d	Decompress" \
+     "\n	-c	Write to stdout" \
+     "\n	-f	Force" \
+     "\n	-k	Keep input files" \
+
+#define lzcat_trivial_usage \
+       "[FILE]..." \
+
+#define lzcat_full_usage "\n\n" \
+       "Decompress to stdout" \
+
+#define unxz_trivial_usage \
+       "[-cfk] [FILE]..." \
+
+#define unxz_full_usage "\n\n" \
+       "Decompress FILE (or stdin)\n" \
+     "\n	-c	Write to stdout" \
+     "\n	-f	Force" \
+     "\n	-k	Keep input files" \
+
+#define xz_trivial_usage \
+       "-d [-cfk] [FILE]..." \
+
+#define xz_full_usage "\n\n" \
+       "Decompress FILE (or stdin)\n" \
+     "\n	-d	Decompress" \
+     "\n	-c	Write to stdout" \
+     "\n	-f	Force" \
+     "\n	-k	Keep input files" \
+
+#define xzcat_trivial_usage \
+       "[FILE]..." \
+
+#define xzcat_full_usage "\n\n" \
+       "Decompress to stdout" \
+
+#define bzip2_trivial_usage \
+       "[OPTIONS] [FILE]..." \
+
+#define bzip2_full_usage "\n\n" \
+       "Compress FILEs (or stdin) with bzip2 algorithm\n" \
+     "\n	-1..9	Compression level" \
+	IF_FEATURE_BZIP2_DECOMPRESS( \
+     "\n	-d	Decompress" \
+     "\n	-t	Test file integrity" \
+	) \
+     "\n	-c	Write to stdout" \
+     "\n	-f	Force" \
+     "\n	-k	Keep input files" \
+
+#define cpio_trivial_usage \
+       "[-dmvu] [-F FILE] [-R USER[:GRP]]" IF_FEATURE_CPIO_O(" [-H newc]") \
+       " [-ti"IF_FEATURE_CPIO_O("o")"]" IF_FEATURE_CPIO_P(" [-p DIR]") \
+       " [EXTR_FILE]..." \
+
+#define cpio_full_usage "\n\n" \
+       "Extract (-i) or list (-t) files from a cpio archive" \
+	IF_FEATURE_CPIO_O(", or" \
+     "\ntake file list from stdin and create an archive (-o)" \
+                IF_FEATURE_CPIO_P(" or copy files (-p)") \
+	) \
+     "\n" \
+     "\nMain operation mode:" \
+     "\n	-t	List" \
+     "\n	-i	Extract EXTR_FILEs (or all)" \
+	IF_FEATURE_CPIO_O( \
+     "\n	-o	Create (requires -H newc)" \
+	) \
+	IF_FEATURE_CPIO_P( \
+     "\n	-p DIR	Copy files to DIR" \
+	) \
+     "\nOptions:" \
+     "\n	-d	Make leading directories" \
+     "\n	-m	Preserve mtime" \
+     "\n	-v	Verbose" \
+     "\n	-u	Overwrite" \
+     "\n	-F FILE	Input (-t,-i,-p) or output (-o) file" \
+     "\n	-R USER[:GRP]	Set owner of created files" \
+	IF_FEATURE_CPIO_O( \
+     "\n	-H newc	Archive format" \
+	) \
+
+#define dpkg_trivial_usage \
+       "[-ilCPru] [-F OPT] PACKAGE" \
+
+#define dpkg_full_usage "\n\n" \
+       "Install, remove and manage Debian packages\n" \
+	IF_LONG_OPTS( \
+     "\n	-i,--install	Install the package" \
+     "\n	-l,--list	List of installed packages" \
+     "\n	--configure	Configure an unpackaged package" \
+     "\n	-P,--purge	Purge all files of a package" \
+     "\n	-r,--remove	Remove all but the configuration files for a package" \
+     "\n	--unpack	Unpack a package, but don't configure it" \
+     "\n	--force-depends	Ignore dependency problems" \
+     "\n	--force-confnew	Overwrite existing config files when installing" \
+     "\n	--force-confold	Keep old config files when installing" \
+	) \
+	IF_NOT_LONG_OPTS( \
+     "\n	-i		Install the package" \
+     "\n	-l		List of installed packages" \
+     "\n	-C		Configure an unpackaged package" \
+     "\n	-P		Purge all files of a package" \
+     "\n	-r		Remove all but the configuration files for a package" \
+     "\n	-u		Unpack a package, but don't configure it" \
+     "\n	-F depends	Ignore dependency problems" \
+     "\n	-F confnew	Overwrite existing config files when installing" \
+     "\n	-F confold	Keep old config files when installing" \
+	) \
+
+#define dpkg_deb_trivial_usage \
+       "[-cefxX] FILE [DIR]" \
+
+#define dpkg_deb_full_usage "\n\n" \
+       "Perform actions on Debian packages (.deb)\n" \
+     "\n	-c	List files" \
+     "\n	-f	Print control fields" \
+     "\n	-e	Extract control files to DIR (default: ./DEBIAN)" \
+     "\n	-x	Extract files to DIR (no default)" \
+     "\n	-X	Verbose -x" \
+
+#define dpkg_deb_example_usage \
+       "$ dpkg-deb -X ./busybox_0.48-1_i386.deb /tmp\n" \
+
+#define gzip_trivial_usage \
+       "[-cfk" IF_FEATURE_GZIP_DECOMPRESS("dt") IF_FEATURE_GZIP_LEVELS("123456789") "] [FILE]..." \
+
+#define gzip_full_usage "\n\n" \
+       "Compress FILEs (or stdin)\n" \
+	IF_FEATURE_GZIP_LEVELS( \
+     "\n	-1..9	Compression level" \
+	) \
+	IF_FEATURE_GZIP_DECOMPRESS( \
+     "\n	-d	Decompress" \
+     "\n	-t	Test file integrity" \
+	) \
+     "\n	-c	Write to stdout" \
+     "\n	-f	Force" \
+     "\n	-k	Keep input files" \
+
+#define gzip_example_usage \
+       "$ ls -la /tmp/busybox*\n" \
+       "-rw-rw-r--    1 andersen andersen  1761280 Apr 14 17:47 /tmp/busybox.tar\n" \
+       "$ gzip /tmp/busybox.tar\n" \
+       "$ ls -la /tmp/busybox*\n" \
+       "-rw-rw-r--    1 andersen andersen   554058 Apr 14 17:49 /tmp/busybox.tar.gz\n" \
+
+#define lzop_trivial_usage \
+       "[-cfUvd123456789CF] [FILE]..." \
+
+#define lzop_full_usage "\n\n" \
+       "	-1..9	Compression level" \
+     "\n	-d	Decompress" \
+     "\n	-c	Write to stdout" \
+     "\n	-f	Force" \
+     "\n	-U	Delete input files" \
+     "\n	-v	Verbose" \
+     "\n	-F	Don't store or verify checksum" \
+     "\n	-C	Also write checksum of compressed block" \
+
+#define lzopcat_trivial_usage \
+       "[-vF] [FILE]..." \
+
+#define lzopcat_full_usage "\n\n" \
+       "	-v	Verbose" \
+     "\n	-F	Don't verify checksum" \
+
+#define unlzop_trivial_usage \
+       "[-cfkvF] [FILE]..." \
+
+#define unlzop_full_usage "\n\n" \
+       "	-c	Write to stdout" \
+     "\n	-f	Force" \
+     "\n	-U	Delete input files" \
+     "\n	-v	Verbose" \
+     "\n	-F	Don't verify checksum" \
+
+#define rpm_trivial_usage \
+       "-i PACKAGE.rpm; rpm -qp[ildc] PACKAGE.rpm" \
+
+#define rpm_full_usage "\n\n" \
+       "Manipulate RPM packages\n" \
+     "\nCommands:" \
+     "\n	-i	Install package" \
+     "\n	-qp	Query package" \
+     "\n	-qpi	Show information" \
+     "\n	-qpl	List contents" \
+     "\n	-qpd	List documents" \
+     "\n	-qpc	List config files" \
+
+#define rpm2cpio_trivial_usage \
+       "package.rpm" \
+
+#define rpm2cpio_full_usage "\n\n" \
+       "Output a cpio archive of the rpm file" \
+
+#define tar_trivial_usage \
+	"-[" IF_FEATURE_TAR_CREATE("c") "xt" \
+	IF_FEATURE_SEAMLESS_Z("Z") \
+	IF_FEATURE_SEAMLESS_GZ("z") \
+	IF_FEATURE_SEAMLESS_XZ("J") \
+	IF_FEATURE_SEAMLESS_BZ2("j") \
+	IF_FEATURE_SEAMLESS_LZMA("a") \
+	IF_FEATURE_TAR_CREATE("h") \
+	IF_FEATURE_TAR_NOPRESERVE_TIME("m") \
+	"vO] " \
+	IF_FEATURE_TAR_FROM("[-X FILE] [-T FILE] ") \
+	"[-f TARFILE] [-C DIR] [FILE]..." \
+
+#define tar_full_usage "\n\n" \
+	IF_FEATURE_TAR_CREATE("Create, extract, ") \
+	IF_NOT_FEATURE_TAR_CREATE("Extract ") \
+	"or list files from a tar file\n" \
+     "\nOperation:" \
+	IF_FEATURE_TAR_CREATE( \
+     "\n	c	Create" \
+	) \
+     "\n	x	Extract" \
+     "\n	t	List" \
+     "\n	f	Name of TARFILE ('-' for stdin/out)" \
+     "\n	C	Change to DIR before operation" \
+     "\n	v	Verbose" \
+	IF_FEATURE_SEAMLESS_Z( \
+     "\n	Z	(De)compress using compress" \
+	) \
+	IF_FEATURE_SEAMLESS_GZ( \
+     "\n	z	(De)compress using gzip" \
+	) \
+	IF_FEATURE_SEAMLESS_XZ( \
+     "\n	J	(De)compress using xz" \
+	) \
+	IF_FEATURE_SEAMLESS_BZ2( \
+     "\n	j	(De)compress using bzip2" \
+	) \
+	IF_FEATURE_SEAMLESS_LZMA( \
+     "\n	a	(De)compress using lzma" \
+	) \
+     "\n	O	Extract to stdout" \
+	IF_FEATURE_TAR_CREATE( \
+     "\n	h	Follow symlinks" \
+	) \
+	IF_FEATURE_TAR_NOPRESERVE_TIME( \
+     "\n	m	Don't restore mtime" \
+	) \
+	IF_FEATURE_TAR_FROM( \
+	IF_FEATURE_TAR_LONG_OPTIONS( \
+     "\n	exclude	File to exclude" \
+	) \
+     "\n	X	File with names to exclude" \
+     "\n	T	File with names to include" \
+	) \
+
+#define tar_example_usage \
+       "$ zcat /tmp/tarball.tar.gz | tar -xf -\n" \
+       "$ tar -cf /tmp/tarball.tar /usr/local\n" \
+
+#define unzip_trivial_usage \
+       "[-lnopq] FILE[.zip] [FILE]... [-x FILE...] [-d DIR]" \
+
+#define unzip_full_usage "\n\n" \
+       "Extract FILEs from ZIP archive\n" \
+     "\n	-l	List contents (with -q for short form)" \
+     "\n	-n	Never overwrite files (default: ask)" \
+     "\n	-o	Overwrite" \
+     "\n	-p	Print to stdout" \
+     "\n	-q	Quiet" \
+     "\n	-x FILE	Exclude FILEs" \
+     "\n	-d DIR	Extract into DIR" \
+
+#define chvt_trivial_usage \
+       "N" \
+
+#define chvt_full_usage "\n\n" \
+       "Change the foreground virtual terminal to /dev/ttyN" \
+
+#define clear_trivial_usage \
+       "" \
+
+#define clear_full_usage "\n\n" \
+       "Clear screen" \
+
+#define deallocvt_trivial_usage \
+       "[N]" \
+
+#define deallocvt_full_usage "\n\n" \
+       "Deallocate unused virtual terminal /dev/ttyN" \
+
+#define dumpkmap_trivial_usage \
+       "> keymap" \
+
+#define dumpkmap_full_usage "\n\n" \
+       "Print a binary keyboard translation table to stdout" \
+
+#define dumpkmap_example_usage \
+       "$ dumpkmap > keymap\n" \
+
+#define fgconsole_trivial_usage \
+	"" \
+
+#define fgconsole_full_usage "\n\n" \
+	"Get active console" \
+
+#define kbd_mode_trivial_usage \
+       "[-a|k|s|u] [-C TTY]" \
+
+#define kbd_mode_full_usage "\n\n" \
+       "Report or set the keyboard mode\n" \
+     "\n	-a	Default (ASCII)" \
+     "\n	-k	Medium-raw (keyboard)" \
+     "\n	-s	Raw (scancode)" \
+     "\n	-u	Unicode (utf-8)" \
+     "\n	-C TTY	Affect TTY instead of /dev/tty" \
+
+#define loadfont_trivial_usage \
+       "< font" \
+
+#define loadfont_full_usage "\n\n" \
+       "Load a console font from stdin" \
+
+#define loadfont_example_usage \
+       "$ loadfont < /etc/i18n/fontname\n" \
+
+#define setfont_trivial_usage \
+       "FONT [-m MAPFILE] [-C TTY]" \
+
+#define setfont_full_usage "\n\n" \
+       "Load a console font\n" \
+     "\n	-m MAPFILE	Load console screen map" \
+     "\n	-C TTY		Affect TTY instead of /dev/tty" \
+
+#define setfont_example_usage \
+       "$ setfont -m koi8-r /etc/i18n/fontname\n" \
+
+#define loadkmap_trivial_usage \
+       "< keymap" \
+
+#define loadkmap_full_usage "\n\n" \
+       "Load a binary keyboard translation table from stdin" \
+
+#define loadkmap_example_usage \
+       "$ loadkmap < /etc/i18n/lang-keymap\n" \
+
+#define openvt_trivial_usage \
+       "[-c N] [-sw] [PROG ARGS]" \
+
+#define openvt_full_usage "\n\n" \
+       "Start PROG on a new virtual terminal\n" \
+     "\n	-c N	Use specified VT" \
+     "\n	-s	Switch to the VT" \
+     "\n	-w	Wait for PROG to exit" \
+
+#define openvt_example_usage \
+       "openvt 2 /bin/ash\n" \
+
+#define reset_trivial_usage \
+       "" \
+
+#define reset_full_usage "\n\n" \
+       "Reset the screen" \
+
+#define resize_trivial_usage \
+       "" \
+
+#define resize_full_usage "\n\n" \
+       "Resize the screen" \
+
+#define setconsole_trivial_usage \
+       "[-r" IF_FEATURE_SETCONSOLE_LONG_OPTIONS("|--reset") "] [DEVICE]" \
+
+#define setconsole_full_usage "\n\n" \
+       "Redirect system console output to DEVICE (default: /dev/tty)\n" \
+     "\n	-r	Reset output to /dev/console" \
+
+#define setkeycodes_trivial_usage \
+       "SCANCODE KEYCODE..." \
+
+#define setkeycodes_full_usage "\n\n" \
+       "Set entries into the kernel's scancode-to-keycode map,\n" \
+       "allowing unusual keyboards to generate usable keycodes.\n\n" \
+       "SCANCODE may be either xx or e0xx (hexadecimal),\n" \
+       "and KEYCODE is given in decimal." \
+
+#define setkeycodes_example_usage \
+       "$ setkeycodes e030 127\n" \
+
+#define setlogcons_trivial_usage \
+       "[N]" \
+
+#define setlogcons_full_usage "\n\n" \
+       "Redirect the kernel output to console N. Default:0 (current console)" \
+
+#define showkey_trivial_usage \
+       "[-a | -k | -s]" \
+
+#define showkey_full_usage "\n\n" \
+       "Show keys pressed\n" \
+     "\n	-a	Display decimal/octal/hex values of the keys" \
+     "\n	-k	Display interpreted keycodes (default)" \
+     "\n	-s	Display raw scan-codes" \
+
+#define basename_trivial_usage \
+       "FILE [SUFFIX]" \
+
+#define basename_full_usage "\n\n" \
+       "Strip directory path and .SUFFIX from FILE" \
+
+#define basename_example_usage \
+       "$ basename /usr/local/bin/foo\n" \
+       "foo\n" \
+       "$ basename /usr/local/bin/\n" \
+       "bin\n" \
+       "$ basename /foo/bar.txt .txt\n" \
+       "bar" \
+
+#define cat_trivial_usage \
+       "[-nb"IF_FEATURE_CATV("vteA")"] [FILE]..." \
+
+#define cat_full_usage "\n\n" \
+       "Print FILEs to stdout\n" \
+     "\n	-n	Number output lines" \
+     "\n	-b	Number nonempty lines" \
+	IF_FEATURE_CATV( \
+     "\n	-v	Show nonprinting characters as ^x or M-x" \
+     "\n	-t	...and tabs as ^I" \
+     "\n	-e	...and end lines with $" \
+     "\n	-A	Same as -vte" \
+	) \
+
+#define cat_example_usage \
+       "$ cat /proc/uptime\n" \
+       "110716.72 17.67" \
+
+#define chgrp_trivial_usage \
+       "[-RhLHP"IF_DESKTOP("cvf")"]... GROUP FILE..." \
+
+#define chgrp_full_usage "\n\n" \
+       "Change the group membership of each FILE to GROUP\n" \
+     "\n	-R	Recurse" \
+     "\n	-h	Affect symlinks instead of symlink targets" \
+     "\n	-L	Traverse all symlinks to directories" \
+     "\n	-H	Traverse symlinks on command line only" \
+     "\n	-P	Don't traverse symlinks (default)" \
+	IF_DESKTOP( \
+     "\n	-c	List changed files" \
+     "\n	-v	Verbose" \
+     "\n	-f	Hide errors" \
+	) \
+
+#define chgrp_example_usage \
+       "$ ls -l /tmp/foo\n" \
+       "-r--r--r--    1 andersen andersen        0 Apr 12 18:25 /tmp/foo\n" \
+       "$ chgrp root /tmp/foo\n" \
+       "$ ls -l /tmp/foo\n" \
+       "-r--r--r--    1 andersen root            0 Apr 12 18:25 /tmp/foo\n" \
+
+#define chmod_trivial_usage \
+       "[-R"IF_DESKTOP("cvf")"] MODE[,MODE]... FILE..." \
+
+#define chmod_full_usage "\n\n" \
+       "Each MODE is one or more of the letters ugoa, one of the\n" \
+       "symbols +-= and one or more of the letters rwxst\n" \
+     "\n	-R	Recurse" \
+	IF_DESKTOP( \
+     "\n	-c	List changed files" \
+     "\n	-v	List all files" \
+     "\n	-f	Hide errors" \
+	) \
+
+#define chmod_example_usage \
+       "$ ls -l /tmp/foo\n" \
+       "-rw-rw-r--    1 root     root            0 Apr 12 18:25 /tmp/foo\n" \
+       "$ chmod u+x /tmp/foo\n" \
+       "$ ls -l /tmp/foo\n" \
+       "-rwxrw-r--    1 root     root            0 Apr 12 18:25 /tmp/foo*\n" \
+       "$ chmod 444 /tmp/foo\n" \
+       "$ ls -l /tmp/foo\n" \
+       "-r--r--r--    1 root     root            0 Apr 12 18:25 /tmp/foo\n" \
+
+#define chown_trivial_usage \
+       "[-Rh"IF_DESKTOP("LHPcvf")"]... USER[:[GRP]] FILE..." \
+
+#define chown_full_usage "\n\n" \
+       "Change the owner and/or group of each FILE to USER and/or GRP\n" \
+     "\n	-R	Recurse" \
+     "\n	-h	Affect symlinks instead of symlink targets" \
+	IF_DESKTOP( \
+     "\n	-L	Traverse all symlinks to directories" \
+     "\n	-H	Traverse symlinks on command line only" \
+     "\n	-P	Don't traverse symlinks (default)" \
+     "\n	-c	List changed files" \
+     "\n	-v	List all files" \
+     "\n	-f	Hide errors" \
+	) \
+
+#define chown_example_usage \
+       "$ ls -l /tmp/foo\n" \
+       "-r--r--r--    1 andersen andersen        0 Apr 12 18:25 /tmp/foo\n" \
+       "$ chown root /tmp/foo\n" \
+       "$ ls -l /tmp/foo\n" \
+       "-r--r--r--    1 root     andersen        0 Apr 12 18:25 /tmp/foo\n" \
+       "$ chown root.root /tmp/foo\n" \
+       "ls -l /tmp/foo\n" \
+       "-r--r--r--    1 root     root            0 Apr 12 18:25 /tmp/foo\n" \
+
+#define chroot_trivial_usage \
+       "NEWROOT [PROG ARGS]" \
+
+#define chroot_full_usage "\n\n" \
+       "Run PROG with root directory set to NEWROOT" \
+
+#define chroot_example_usage \
+       "$ ls -l /bin/ls\n" \
+       "lrwxrwxrwx    1 root     root          12 Apr 13 00:46 /bin/ls -> /BusyBox\n" \
+       "# mount /dev/hdc1 /mnt -t minix\n" \
+       "# chroot /mnt\n" \
+       "# ls -l /bin/ls\n" \
+       "-rwxr-xr-x    1 root     root        40816 Feb  5 07:45 /bin/ls*\n" \
+
+#define cksum_trivial_usage \
+       "FILE..." \
+
+#define cksum_full_usage "\n\n" \
+       "Calculate the CRC32 checksums of FILEs" \
+
+#define comm_trivial_usage \
+       "[-123] FILE1 FILE2" \
+
+#define comm_full_usage "\n\n" \
+       "Compare FILE1 with FILE2\n" \
+     "\n	-1	Suppress lines unique to FILE1" \
+     "\n	-2	Suppress lines unique to FILE2" \
+     "\n	-3	Suppress lines common to both files" \
+
+#define cp_trivial_usage \
+       "[OPTIONS] SOURCE... DEST" \
+
+#define cp_full_usage "\n\n" \
+       "Copy SOURCE(s) to DEST\n" \
+     "\n	-a	Same as -dpR" \
+	IF_SELINUX( \
+     "\n	-c	Preserve security context" \
+	) \
+     "\n	-R,-r	Recurse" \
+     "\n	-d,-P	Preserve symlinks (default if -R)" \
+     "\n	-L	Follow all symlinks" \
+     "\n	-H	Follow symlinks on command line" \
+     "\n	-p	Preserve file attributes if possible" \
+     "\n	-f	Overwrite" \
+     "\n	-i	Prompt before overwrite" \
+     "\n	-l,-s	Create (sym)links" \
+     "\n	-u	Copy only newer files" \
+
+#define cut_trivial_usage \
+       "[OPTIONS] [FILE]..." \
+
+#define cut_full_usage "\n\n" \
+       "Print selected fields from each input FILE to stdout\n" \
+     "\n	-b LIST	Output only bytes from LIST" \
+     "\n	-c LIST	Output only characters from LIST" \
+     "\n	-d CHAR	Use CHAR instead of tab as the field delimiter" \
+     "\n	-s	Output only the lines containing delimiter" \
+     "\n	-f N	Print only these fields" \
+     "\n	-n	Ignored" \
+
+#define cut_example_usage \
+       "$ echo \"Hello world\" | cut -f 1 -d ' '\n" \
+       "Hello\n" \
+       "$ echo \"Hello world\" | cut -f 2 -d ' '\n" \
+       "world\n" \
+
+#define date_trivial_usage \
+       "[OPTIONS] [+FMT] [TIME]" \
+
+#define date_full_usage "\n\n" \
+       "Display time (using +FMT), or set time\n" \
+	IF_NOT_LONG_OPTS( \
+     "\n	[-s] TIME	Set time to TIME" \
+     "\n	-u		Work in UTC (don't convert to local time)" \
+     "\n	-R		Output RFC-2822 compliant date string" \
+	) IF_LONG_OPTS( \
+     "\n	[-s,--set] TIME	Set time to TIME" \
+     "\n	-u,--utc	Work in UTC (don't convert to local time)" \
+     "\n	-R,--rfc-2822	Output RFC-2822 compliant date string" \
+	) \
+	IF_FEATURE_DATE_ISOFMT( \
+     "\n	-I[SPEC]	Output ISO-8601 compliant date string" \
+     "\n			SPEC='date' (default) for date only," \
+     "\n			'hours', 'minutes', or 'seconds' for date and" \
+     "\n			time to the indicated precision" \
+	) \
+	IF_NOT_LONG_OPTS( \
+     "\n	-r FILE		Display last modification time of FILE" \
+     "\n	-d TIME		Display TIME, not 'now'" \
+	) IF_LONG_OPTS( \
+     "\n	-r,--reference FILE	Display last modification time of FILE" \
+     "\n	-d,--date TIME	Display TIME, not 'now'" \
+	) \
+	IF_FEATURE_DATE_ISOFMT( \
+     "\n	-D FMT		Use FMT for -d TIME conversion" \
+	) \
+     "\n" \
+     "\nRecognized TIME formats:" \
+     "\n	hh:mm[:ss]" \
+     "\n	[YYYY.]MM.DD-hh:mm[:ss]" \
+     "\n	YYYY-MM-DD hh:mm[:ss]" \
+     "\n	[[[[[YY]YY]MM]DD]hh]mm[.ss]" \
+	IF_FEATURE_DATE_COMPAT( \
+     "\n	'date TIME' form accepts MMDDhhmm[[YY]YY][.ss] instead" \
+	) \
+
+#define date_example_usage \
+       "$ date\n" \
+       "Wed Apr 12 18:52:41 MDT 2000\n" \
+
+#define dd_trivial_usage \
+       "[if=FILE] [of=FILE] " IF_FEATURE_DD_IBS_OBS("[ibs=N] [obs=N] ") "[bs=N] [count=N] [skip=N]\n" \
+       "	[seek=N]" IF_FEATURE_DD_IBS_OBS(" [conv=notrunc|noerror|sync|fsync] [iflag=skip_bytes]") \
+
+#define dd_full_usage "\n\n" \
+       "Copy a file with converting and formatting\n" \
+     "\n	if=FILE		Read from FILE instead of stdin" \
+     "\n	of=FILE		Write to FILE instead of stdout" \
+     "\n	bs=N		Read and write N bytes at a time" \
+	IF_FEATURE_DD_IBS_OBS( \
+     "\n	ibs=N		Read N bytes at a time" \
+	) \
+	IF_FEATURE_DD_IBS_OBS( \
+     "\n	obs=N		Write N bytes at a time" \
+	) \
+     "\n	count=N		Copy only N input blocks" \
+     "\n	skip=N		Skip N input blocks" \
+     "\n	seek=N		Skip N output blocks" \
+	IF_FEATURE_DD_IBS_OBS( \
+     "\n	conv=notrunc	Don't truncate output file" \
+     "\n	conv=noerror	Continue after read errors" \
+     "\n	conv=sync	Pad blocks with zeros" \
+     "\n	conv=fsync	Physically write data out before finishing" \
+     "\n	conv=swab	Swap every pair of bytes" \
+     "\n	iflag=skip_bytes	skip=N is in bytes" \
+	) \
+	IF_FEATURE_DD_STATUS( \
+     "\n	status=noxfer	Suppress rate output" \
+     "\n	status=none	Suppress all output" \
+	) \
+     "\n" \
+     "\nN may be suffixed by c (1), w (2), b (512), kB (1000), k (1024), MB, M, GB, G" \
+
+#define dd_example_usage \
+       "$ dd if=/dev/zero of=/dev/ram1 bs=1M count=4\n" \
+       "4+0 records in\n" \
+       "4+0 records out\n" \
+
+#define df_trivial_usage \
+	"[-Pk" \
+	IF_FEATURE_HUMAN_READABLE("mh") \
+	"T" \
+	IF_FEATURE_DF_FANCY("ai] [-B SIZE") \
+	"] [FILESYSTEM]..." \
+
+#define df_full_usage "\n\n" \
+       "Print filesystem usage statistics\n" \
+     "\n	-P	POSIX output format" \
+     "\n	-k	1024-byte blocks (default)" \
+	IF_FEATURE_HUMAN_READABLE( \
+     "\n	-m	1M-byte blocks" \
+     "\n	-h	Human readable (e.g. 1K 243M 2G)" \
+	) \
+     "\n	-T	Print filesystem type" \
+	IF_FEATURE_DF_FANCY( \
+     "\n	-a	Show all filesystems" \
+     "\n	-i	Inodes" \
+     "\n	-B SIZE	Blocksize" \
+	) \
+
+#define df_example_usage \
+       "$ df\n" \
+       "Filesystem           1K-blocks      Used Available Use% Mounted on\n" \
+       "/dev/sda3              8690864   8553540    137324  98% /\n" \
+       "/dev/sda1                64216     36364     27852  57% /boot\n" \
+       "$ df /dev/sda3\n" \
+       "Filesystem           1K-blocks      Used Available Use% Mounted on\n" \
+       "/dev/sda3              8690864   8553540    137324  98% /\n" \
+       "$ POSIXLY_CORRECT=sure df /dev/sda3\n" \
+       "Filesystem         512B-blocks      Used Available Use% Mounted on\n" \
+       "/dev/sda3             17381728  17107080    274648  98% /\n" \
+       "$ POSIXLY_CORRECT=yep df -P /dev/sda3\n" \
+       "Filesystem          512-blocks      Used Available Capacity Mounted on\n" \
+       "/dev/sda3             17381728  17107080    274648      98% /\n" \
+
+#define dirname_trivial_usage \
+       "FILENAME" \
+
+#define dirname_full_usage "\n\n" \
+       "Strip non-directory suffix from FILENAME" \
+
+#define dirname_example_usage \
+       "$ dirname /tmp/foo\n" \
+       "/tmp\n" \
+       "$ dirname /tmp/foo/\n" \
+       "/tmp\n" \
+
+#define dos2unix_trivial_usage \
+       "[-ud] [FILE]" \
+
+#define dos2unix_full_usage "\n\n" \
+       "Convert FILE in-place from DOS to Unix format.\n" \
+       "When no file is given, use stdin/stdout.\n" \
+     "\n	-u	dos2unix" \
+     "\n	-d	unix2dos" \
+
+#define unix2dos_trivial_usage \
+       "[-ud] [FILE]" \
+
+#define unix2dos_full_usage "\n\n" \
+       "Convert FILE in-place from Unix to DOS format.\n" \
+       "When no file is given, use stdin/stdout.\n" \
+     "\n	-u	dos2unix" \
+     "\n	-d	unix2dos" \
+
+#define du_trivial_usage \
+       "[-aHLdclsx" IF_FEATURE_HUMAN_READABLE("hm") "k] [FILE]..." \
+
+#define du_full_usage "\n\n" \
+       "Summarize disk space used for each FILE and/or directory\n" \
+     "\n	-a	Show file sizes too" \
+     "\n	-L	Follow all symlinks" \
+     "\n	-H	Follow symlinks on command line" \
+     "\n	-d N	Limit output to directories (and files with -a) of depth < N" \
+     "\n	-c	Show grand total" \
+     "\n	-l	Count sizes many times if hard linked" \
+     "\n	-s	Display only a total for each argument" \
+     "\n	-x	Skip directories on different filesystems" \
+	IF_FEATURE_HUMAN_READABLE( \
+     "\n	-h	Sizes in human readable format (e.g., 1K 243M 2G)" \
+     "\n	-m	Sizes in megabytes" \
+	) \
+     "\n	-k	Sizes in kilobytes" IF_FEATURE_DU_DEFAULT_BLOCKSIZE_1K(" (default)") \
+	IF_NOT_FEATURE_DU_DEFAULT_BLOCKSIZE_1K( \
+     "\n		Default unit is 512 bytes" \
+	) \
+
+#define du_example_usage \
+       "$ du\n" \
+       "16      ./CVS\n" \
+       "12      ./kernel-patches/CVS\n" \
+       "80      ./kernel-patches\n" \
+       "12      ./tests/CVS\n" \
+       "36      ./tests\n" \
+       "12      ./scripts/CVS\n" \
+       "16      ./scripts\n" \
+       "12      ./docs/CVS\n" \
+       "104     ./docs\n" \
+       "2417    .\n" \
+
+#define echo_trivial_usage \
+	IF_FEATURE_FANCY_ECHO("[-neE] ") "[ARG]..." \
+
+#define echo_full_usage "\n\n" \
+       "Print the specified ARGs to stdout" \
+	IF_FEATURE_FANCY_ECHO( "\n" \
+     "\n	-n	Suppress trailing newline" \
+     "\n	-e	Interpret backslash escapes (i.e., \\t=tab)" \
+     "\n	-E	Don't interpret backslash escapes (default)" \
+	) \
+
+#define echo_example_usage \
+       "$ echo \"Erik is cool\"\n" \
+       "Erik is cool\n" \
+	IF_FEATURE_FANCY_ECHO("$ echo -e \"Erik\\nis\\ncool\"\n" \
+       "Erik\n" \
+       "is\n" \
+       "cool\n" \
+       "$ echo \"Erik\\nis\\ncool\"\n" \
+       "Erik\\nis\\ncool\n") \
+
+#define env_trivial_usage \
+       "[-iu] [-] [name=value]... [PROG ARGS]" \
+
+#define env_full_usage "\n\n" \
+       "Print the current environment or run PROG after setting up\n" \
+       "the specified environment\n" \
+     "\n	-, -i	Start with an empty environment" \
+     "\n	-u	Remove variable from the environment" \
+
+#define expand_trivial_usage \
+       "[-i] [-t N] [FILE]..." \
+
+#define expand_full_usage "\n\n" \
+       "Convert tabs to spaces, writing to stdout\n" \
+	IF_FEATURE_EXPAND_LONG_OPTIONS( \
+     "\n	-i,--initial	Don't convert tabs after non blanks" \
+     "\n	-t,--tabs N	Tabstops every N chars" \
+	) \
+	IF_NOT_FEATURE_EXPAND_LONG_OPTIONS( \
+     "\n	-i	Don't convert tabs after non blanks" \
+     "\n	-t	Tabstops every N chars" \
+	) \
+
+#define unexpand_trivial_usage \
+       "[-fa][-t N] [FILE]..." \
+
+#define unexpand_full_usage "\n\n" \
+       "Convert spaces to tabs, writing to stdout\n" \
+	IF_FEATURE_UNEXPAND_LONG_OPTIONS( \
+     "\n	-a,--all	Convert all blanks" \
+     "\n	-f,--first-only	Convert only leading blanks" \
+     "\n	-t,--tabs N	Tabstops every N chars" \
+	) \
+	IF_NOT_FEATURE_UNEXPAND_LONG_OPTIONS( \
+     "\n	-a	Convert all blanks" \
+     "\n	-f	Convert only leading blanks" \
+     "\n	-t N	Tabstops every N chars" \
+	) \
+
+#define expr_trivial_usage \
+       "EXPRESSION" \
+
+#define expr_full_usage "\n\n" \
+       "Print the value of EXPRESSION to stdout\n" \
+    "\n" \
+       "EXPRESSION may be:\n" \
+       "	ARG1 | ARG2	ARG1 if it is neither null nor 0, otherwise ARG2\n" \
+       "	ARG1 & ARG2	ARG1 if neither argument is null or 0, otherwise 0\n" \
+       "	ARG1 < ARG2	1 if ARG1 is less than ARG2, else 0. Similarly:\n" \
+       "	ARG1 <= ARG2\n" \
+       "	ARG1 = ARG2\n" \
+       "	ARG1 != ARG2\n" \
+       "	ARG1 >= ARG2\n" \
+       "	ARG1 > ARG2\n" \
+       "	ARG1 + ARG2	Sum of ARG1 and ARG2. Similarly:\n" \
+       "	ARG1 - ARG2\n" \
+       "	ARG1 * ARG2\n" \
+       "	ARG1 / ARG2\n" \
+       "	ARG1 % ARG2\n" \
+       "	STRING : REGEXP		Anchored pattern match of REGEXP in STRING\n" \
+       "	match STRING REGEXP	Same as STRING : REGEXP\n" \
+       "	substr STRING POS LENGTH Substring of STRING, POS counted from 1\n" \
+       "	index STRING CHARS	Index in STRING where any CHARS is found, or 0\n" \
+       "	length STRING		Length of STRING\n" \
+       "	quote TOKEN		Interpret TOKEN as a string, even if\n" \
+       "				it is a keyword like 'match' or an\n" \
+       "				operator like '/'\n" \
+       "	(EXPRESSION)		Value of EXPRESSION\n" \
+       "\n" \
+       "Beware that many operators need to be escaped or quoted for shells.\n" \
+       "Comparisons are arithmetic if both ARGs are numbers, else\n" \
+       "lexicographical. Pattern matches return the string matched between\n" \
+       "\\( and \\) or null; if \\( and \\) are not used, they return the number\n" \
+       "of characters matched or 0." \
+
+#define factor_trivial_usage \
+       "[NUMBER]..." \
+
+#define factor_full_usage "\n\n" \
+       "Print prime factors" \
+
+#define false_trivial_usage NOUSAGE_STR \
+
+#define false_full_usage "" \
+
+#define false_example_usage \
+       "$ false\n" \
+       "$ echo $?\n" \
+       "1\n" \
+
+#define fold_trivial_usage \
+       "[-bs] [-w WIDTH] [FILE]..." \
+
+#define fold_full_usage "\n\n" \
+       "Wrap input lines in each FILE (or stdin), writing to stdout\n" \
+     "\n	-b	Count bytes rather than columns" \
+     "\n	-s	Break at spaces" \
+     "\n	-w	Use WIDTH columns instead of 80" \
+
+#define fsync_trivial_usage \
+       "[-d] FILE..." \
+
+#define fsync_full_usage "\n\n" \
+       "Write files' buffered blocks to disk\n" \
+     "\n	-d	Avoid syncing metadata" \
+
+#define head_trivial_usage \
+       "[OPTIONS] [FILE]..." \
+
+#define head_full_usage "\n\n" \
+       "Print first 10 lines of each FILE (or stdin) to stdout.\n" \
+       "With more than one FILE, precede each with a filename header.\n" \
+     "\n	-n N[kbm]	Print first N lines" \
+	IF_FEATURE_FANCY_HEAD( \
+     "\n	-n -N[kbm]	Print all except N last lines" \
+     "\n	-c [-]N[kbm]	Print first N bytes" \
+     "\n	-q		Never print headers" \
+     "\n	-v		Always print headers" \
+	) \
+     "\n" \
+     "\nN may be suffixed by k (x1024), b (x512), or m (x1024^2)." \
+
+#define head_example_usage \
+       "$ head -n 2 /etc/passwd\n" \
+       "root:x:0:0:root:/root:/bin/bash\n" \
+       "daemon:x:1:1:daemon:/usr/sbin:/bin/sh\n" \
+
+#define hostid_trivial_usage \
+       "" \
+
+#define hostid_full_usage "\n\n" \
+       "Print out a unique 32-bit identifier for the machine" \
+
+#define id_trivial_usage \
+       "[OPTIONS] [USER]" \
+
+#define id_full_usage "\n\n" \
+       "Print information about USER or the current user\n" \
+	IF_SELINUX( \
+     "\n	-Z	Security context" \
+	) \
+     "\n	-u	User ID" \
+     "\n	-g	Group ID" \
+     "\n	-G	Supplementary group IDs" \
+     "\n	-n	Print names instead of numbers" \
+     "\n	-r	Print real ID instead of effective ID" \
+
+#define id_example_usage \
+       "$ id\n" \
+       "uid=1000(andersen) gid=1000(andersen)\n" \
+
+#define groups_trivial_usage \
+       "[USER]" \
+
+#define groups_full_usage "\n\n" \
+       "Print the group memberships of USER or for the current process" \
+
+#define groups_example_usage \
+       "$ groups\n" \
+       "andersen lp dialout cdrom floppy\n" \
+
+#define install_trivial_usage \
+	"[-cdDsp] [-o USER] [-g GRP] [-m MODE] [-t DIR] [SOURCE]... DEST" \
+
+#define install_full_usage "\n\n" \
+       "Copy files and set attributes\n" \
+     "\n	-c	Just copy (default)" \
+     "\n	-d	Create directories" \
+     "\n	-D	Create leading target directories" \
+     "\n	-s	Strip symbol table" \
+     "\n	-p	Preserve date" \
+     "\n	-o USER	Set ownership" \
+     "\n	-g GRP	Set group ownership" \
+     "\n	-m MODE	Set permissions" \
+     "\n	-t DIR	Install to DIR" \
+	IF_SELINUX( \
+     "\n	-Z	Set security context" \
+	) \
+
+#define link_trivial_usage \
+       "FILE LINK" \
+
+#define link_full_usage "\n\n" \
+       "Create hard LINK to FILE" \
+
+#define ln_trivial_usage \
+       "[OPTIONS] TARGET... LINK|DIR" \
+
+#define ln_full_usage "\n\n" \
+       "Create a link LINK or DIR/TARGET to the specified TARGET(s)\n" \
+     "\n	-s	Make symlinks instead of hardlinks" \
+     "\n	-f	Remove existing destinations" \
+     "\n	-n	Don't dereference symlinks - treat like normal file" \
+     "\n	-b	Make a backup of the target (if exists) before link operation" \
+     "\n	-S suf	Use suffix instead of ~ when making backup files" \
+     "\n	-T	2nd arg must be a DIR" \
+     "\n	-v	Verbose" \
+
+#define ln_example_usage \
+       "$ ln -s BusyBox /tmp/ls\n" \
+       "$ ls -l /tmp/ls\n" \
+       "lrwxrwxrwx    1 root     root            7 Apr 12 18:39 ls -> BusyBox*\n" \
+
+#define logname_trivial_usage \
+       "" \
+
+#define logname_full_usage "\n\n" \
+       "Print the name of the current user" \
+
+#define logname_example_usage \
+       "$ logname\n" \
+       "root\n" \
+
+#define ls_trivial_usage \
+	"[-1AaCxd" \
+	IF_FEATURE_LS_FOLLOWLINKS("LH") \
+	IF_FEATURE_LS_RECURSIVE("R") \
+	IF_FEATURE_LS_FILETYPES("Fp") "lins" \
+	IF_FEATURE_HUMAN_READABLE("h") \
+	IF_FEATURE_LS_SORTFILES("rSXv") \
+	IF_FEATURE_LS_TIMESTAMPS("ctu") \
+	IF_SELINUX("kZ") "]" \
+	IF_FEATURE_LS_WIDTH(" [-w WIDTH]") " [FILE]..." \
+
+#define ls_full_usage "\n\n" \
+       "List directory contents\n" \
+     "\n	-1	One column output" \
+     "\n	-a	Include entries which start with ." \
+     "\n	-A	Like -a, but exclude . and .." \
+     "\n	-x	List by lines" \
+     "\n	-d	List directory entries instead of contents" \
+	IF_FEATURE_LS_FOLLOWLINKS( \
+     "\n	-L	Follow symlinks" \
+     "\n	-H	Follow symlinks on command line" \
+	) \
+	IF_FEATURE_LS_RECURSIVE( \
+     "\n	-R	Recurse" \
+	) \
+	IF_FEATURE_LS_FILETYPES( \
+     "\n	-p	Append / to dir entries" \
+     "\n	-F	Append indicator (one of */=@|) to entries" \
+	) \
+     "\n	-l	Long listing format" \
+     "\n	-i	List inode numbers" \
+     "\n	-n	List numeric UIDs and GIDs instead of names" \
+     "\n	-s	List allocated blocks" \
+	IF_FEATURE_LS_TIMESTAMPS( \
+     "\n	-lc	List ctime" \
+     "\n	-lu	List atime" \
+	) \
+	IF_FEATURE_LS_TIMESTAMPS(IF_LONG_OPTS( \
+     "\n	--full-time	List full date and time" \
+	)) \
+	IF_FEATURE_HUMAN_READABLE( \
+     "\n	-h	Human readable sizes (1K 243M 2G)" \
+	) \
+	IF_FEATURE_LS_SORTFILES( \
+	IF_LONG_OPTS( \
+     "\n	--group-directories-first" \
+	) \
+     "\n	-S	Sort by size" \
+     "\n	-X	Sort by extension" \
+     "\n	-v	Sort by version" \
+	) \
+	IF_FEATURE_LS_TIMESTAMPS( \
+     "\n	-t	Sort by mtime" \
+     "\n	-tc	Sort by ctime" \
+     "\n	-tu	Sort by atime" \
+	) \
+     "\n	-r	Reverse sort order" \
+	IF_SELINUX( \
+     "\n	-Z	List security context and permission" \
+	) \
+	IF_FEATURE_LS_WIDTH( \
+     "\n	-w N	Format N columns wide" \
+	) \
+	IF_FEATURE_LS_COLOR( \
+     "\n	--color[={always,never,auto}]	Control coloring" \
+	) \
+
+#define md5sum_trivial_usage \
+	IF_FEATURE_MD5_SHA1_SUM_CHECK("[-c[sw]] ")"[FILE]..." \
+
+#define md5sum_full_usage "\n\n" \
+       "Print" IF_FEATURE_MD5_SHA1_SUM_CHECK(" or check") " MD5 checksums" \
+	IF_FEATURE_MD5_SHA1_SUM_CHECK( "\n" \
+     "\n	-c	Check sums against list in FILEs" \
+     "\n	-s	Don't output anything, status code shows success" \
+     "\n	-w	Warn about improperly formatted checksum lines" \
+	) \
+
+#define md5sum_example_usage \
+       "$ md5sum < busybox\n" \
+       "6fd11e98b98a58f64ff3398d7b324003\n" \
+       "$ md5sum busybox\n" \
+       "6fd11e98b98a58f64ff3398d7b324003  busybox\n" \
+       "$ md5sum -c -\n" \
+       "6fd11e98b98a58f64ff3398d7b324003  busybox\n" \
+       "busybox: OK\n" \
+       "^D\n" \
+
+#define sha1sum_trivial_usage \
+	IF_FEATURE_MD5_SHA1_SUM_CHECK("[-c[sw]] ")"[FILE]..." \
+
+#define sha1sum_full_usage "\n\n" \
+       "Print" IF_FEATURE_MD5_SHA1_SUM_CHECK(" or check") " SHA1 checksums" \
+	IF_FEATURE_MD5_SHA1_SUM_CHECK( "\n" \
+     "\n	-c	Check sums against list in FILEs" \
+     "\n	-s	Don't output anything, status code shows success" \
+     "\n	-w	Warn about improperly formatted checksum lines" \
+	) \
+
+#define sha256sum_trivial_usage \
+	IF_FEATURE_MD5_SHA1_SUM_CHECK("[-c[sw]] ")"[FILE]..." \
+
+#define sha256sum_full_usage "\n\n" \
+       "Print" IF_FEATURE_MD5_SHA1_SUM_CHECK(" or check") " SHA256 checksums" \
+	IF_FEATURE_MD5_SHA1_SUM_CHECK( "\n" \
+     "\n	-c	Check sums against list in FILEs" \
+     "\n	-s	Don't output anything, status code shows success" \
+     "\n	-w	Warn about improperly formatted checksum lines" \
+	) \
+
+#define sha512sum_trivial_usage \
+	IF_FEATURE_MD5_SHA1_SUM_CHECK("[-c[sw]] ")"[FILE]..." \
+
+#define sha512sum_full_usage "\n\n" \
+       "Print" IF_FEATURE_MD5_SHA1_SUM_CHECK(" or check") " SHA512 checksums" \
+	IF_FEATURE_MD5_SHA1_SUM_CHECK( "\n" \
+     "\n	-c	Check sums against list in FILEs" \
+     "\n	-s	Don't output anything, status code shows success" \
+     "\n	-w	Warn about improperly formatted checksum lines" \
+	) \
+
+#define sha3sum_trivial_usage \
+	IF_FEATURE_MD5_SHA1_SUM_CHECK("[-c[sw]] ")"[-a BITS] [FILE]..." \
+
+#define sha3sum_full_us

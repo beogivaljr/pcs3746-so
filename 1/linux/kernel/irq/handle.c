@@ -172,12 +172,16 @@ irqreturn_t __handle_irq_event_percpu(struct irq_desc *desc, unsigned int *flags
 		
 		//FUNCAO QUE CRIAMOS
 		//COMECA
-		if(irq != 20 || (irq == 20 && desc->irq_count % 1000 == 0)) {
-			char *last_interrupt = kmalloc(250 * sizeof(char), GFP_KERNEL);
-			sprintf(last_interrupt, "IRQ_TYPE: %s\nIRQ_CODE: %d\nIRQ_COUNT: %d\nLAST_IRQ_OCURRENCE: %s", 
-							action->name, irq,  
-							desc->irq_count, 
-							interrupt_time_ocurrence());
+		//FOI PEDIDO A CADA 1M CLOCKS, MAS FIZEMOS COM 500 POIS DEMORA
+		//PARA SAIR O OUTPUT
+		char *last_interrupt = kmalloc(250 * sizeof(char), GFP_KERNEL);
+		unsigned int irq_code = irq;
+		char *irq_type = action->name;
+		unsigned int irq_count = desc->irq_count;
+		char *last_irq_ocurrence = interrupt_time_ocurrence();
+		if((irq_code == 20 && irq_count % 500 == 0) || irq_code != 20) {
+			sprintf(last_interrupt, "IRQ_TYPE: %s\nIRQ_CODE: %d\nIRQ_COUNT: %d\nLAST_IRQ_OCURRENCE: %s",
+						irq_type, irq_code, irq_count, last_irq_ocurrence);
 			sys_last_interrupt(last_interrupt);
 		}
 		//ACABA

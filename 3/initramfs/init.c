@@ -8,7 +8,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 #include <fcntl.h>
-
+#include <time.h>
 
 void panic(const char *msg)
 {
@@ -26,27 +26,27 @@ void mount_fs()
 		panic("mount");
 }
 
+void set_buffer_offset(int fd, char *buf, int size) {
+	if (lseek(fd, 0, SEEK_SET)) {
+		perror("lseek");
+	} else {
+		int offset = read(fd, buf, size);
+		buf[offset] = 0;
+	}
+}
+
 int main()
 {
 	mount_fs();
 
 	int fd = open("/sys/kernel/last_interrupt", O_RDONLY);
-	char buf[300];
+	char interrupt[300];
+	const struct timespec ts = {.tv_sec = 2, .tv_nsec = 0 };
 
-	while(1) {
-		if (lseek(fd, 0, SEEK_SET)) {
-			perror("lseek");
-		} else {
-			int size = read(fd, buf, 250);
-			if (size < 0) {
-				perror("read");
-			} else {
-				buf[size] = 0;
-				printf("%s", buf);
-			}
-		}
-		sleep(5);
+	for(;;) {
+		set_buffer_offset(fd, interrupt, 250);
+		printf("%s", interrupt);
+		nanosleep(&ts, NULL);
 	}
-
 	return 0;
 }
