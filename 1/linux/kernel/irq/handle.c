@@ -20,6 +20,30 @@
 
 #include "internals.h"
 
+#include <linux/time.h>
+#include <linux/slab.h>
+#include <linux/syscalls.h>
+
+char* interrupt_time_ocurrence(void)
+{
+	struct timeval time;
+	struct tm tm;
+
+	do_gettimeofday(&time);	
+	time_to_tm(time.tv_sec, 0, &tm);
+
+	int day = tm.tm_mday;
+	int month = tm.tm_mon + 1;
+	int year = tm.tm_year + 1900;
+	int hour = tm.tm_hour;
+	int min = tm.tm_min;
+	int sec = tm.tm_sec;
+	char *time_ocurrence = kmalloc(100 * sizeof(char), GFP_KERNEL);
+	sprintf(time_ocurrence, " %02d-%02d-%04d %02d:%02d:%02d\n", day, month, year,
+							hour, min, sec);
+	return time_ocurrence;
+}
+
 /**
  * handle_bad_irq - handle spurious and unhandled irqs
  * @desc:      description of the interrupt
@@ -139,11 +163,28 @@ irqreturn_t __handle_irq_event_percpu(struct irq_desc *desc, unsigned int *flags
 	struct irqaction *action;
 
 	for_each_action_of_desc(desc, action) {
+		
 		irqreturn_t res;
 
 		trace_irq_handler_entry(irq, action);
 		res = action->handler(irq, action->dev_id);
 		trace_irq_handler_exit(irq, action, res);
+		
+		//FUNCAO QUE CRIAMOS
+		//COMECA
+		//FOI PEDIDO A CADA 1M CLOCKS, MAS FIZEMOS COM 500 POIS DEMORA
+		//PARA SAIR O OUTPUT
+		char *last_interrupt = kmalloc(250 * sizeof(char), GFP_KERNEL);
+		unsigned int irq_code = irq;
+		char *irq_type = action->name;
+		unsigned int irq_count = desc->irq_count;
+		char *last_irq_ocurrence = interrupt_time_ocurrence();
+		if((irq_code == 20 && irq_count % 500 == 0) || irq_code != 20) {
+			sprintf(last_interrupt, "IRQ_TYPE: %s\nIRQ_CODE: %d\nIRQ_COUNT: %d\nLAST_IRQ_OCURRENCE: %s",
+						irq_type, irq_code, irq_count, last_irq_ocurrence);
+			sys_last_interrupt(last_interrupt);
+		}
+		//ACABA
 
 		if (WARN_ONCE(!irqs_disabled(),"irq %u handler %pF enabled interrupts\n",
 			      irq, action->handler))
